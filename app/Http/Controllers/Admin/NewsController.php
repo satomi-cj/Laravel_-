@@ -7,5 +7,9 @@ use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
-    //
+    public function add()
+    {
+        // dd("aa");
+        return view("admin.news.create");
+    }
 }
