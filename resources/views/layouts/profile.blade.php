@@ -35,6 +35,9 @@
                         </ul>
                     
                         <ul class="navbar-nav ml-auto">
+                            {{ --課題1,ログインリンク、ログアウトリンクを表示-- }}
+                            <li><a class="navlink" href="{{ route('login')}}">{{ --('messages.Login') }}</a></li>
+                            <li><a class="navlink" href="{{ route('logout')}}">{{ --('messages.Logout') }}</a></li>
                         </ul>
                     </div>
                 </div>
