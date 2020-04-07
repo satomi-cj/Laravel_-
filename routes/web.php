@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('profile/create', 'Admin\ProfileController@add');
     Route::get('profile/edit', 'Admin\ProfileController@edit');
     Route::post('profile/create', 'Admin\ProfileController@create');
+    Route::post('profile/edit' , 'Admin\ProfileController@update');
 });
 
 //http://XXXXXX.jp/XXX というアクセスが来たときに、 AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください。
