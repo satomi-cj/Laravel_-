@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
+use App\History;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -80,20 +82,27 @@ class NewsController extends Controller
       if (isset($news_form['image'])) {
         $path =$request->file('image')->store('public/image');
         $news->image_path = basename($path);
-        unset($news_form['image']);
       } elseif (isset($request->remove)) {
         $news->image_path = null;
-        unset($news_form['remove']);
       }
       
       unset($news_form['_token']);
+      unset($news_form['image']);
+      unset($news_form['remove']);
       
       // 該当するデータを上書きして保存する
       $news->fill($news_form)->save();
       //$news->fill($news_form);
       //$news->save();の短縮して書いたもの
      
-      return redirect('admin/news');
+      //News Modelを保存するタイミングで、
+      //同時に History Modelにも編集履歴を追加するよう実装
+      $history = new History;
+      $history->news_id =$news->id;
+      $history->edited_at = Carbon::now();
+      $history->save();
+      
+      return redirect('admin/news/');
     }
     public function delete(Request $request)
     {
