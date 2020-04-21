@@ -28,10 +28,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::post('profile/create', 'Admin\ProfileController@create');
     Route::post('profile/edit' , 'Admin\ProfileController@update');
     Route::get('profile/delete' , 'Admin\ProfileController@delete');
+   
 });
 
-//http://XXXXXX.jp/XXX というアクセスが来たときに、 AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください。
-//Route::group(['pre'])
+
 
 
 
@@ -39,3 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/' , 'NewsController@index');
+Route::get('/profile' , 'ProfileController@index');
+

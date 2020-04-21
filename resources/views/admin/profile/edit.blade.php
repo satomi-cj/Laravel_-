@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group row">
                         <lavel class="col-md-４" for="gender">性別</label>
-                        <div class="col-md-４">
+                        <div class="col-md-10">
                             <input type="text" class="form-control" name="gender" value="{{ $profile_form->gender }}">
                         </div>
                     </div>
