@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="container">
+        <p>プロフィール紹介</p>
         <hr color="#c0c0c0">
         @if (!is_null($headline))
             <div class="row">
